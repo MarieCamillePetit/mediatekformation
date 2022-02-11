@@ -49,6 +49,11 @@ class Formation
      */
     private $videoId;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $id_niveau;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -126,6 +131,18 @@ class Formation
     public function setVideoId(?string $videoId): self
     {
         $this->videoId = $videoId;
+
+        return $this;
+    }
+
+    public function getIdNiveau(): ?int
+    {
+        return $this->id_niveau;
+    }
+
+    public function setIdNiveau(int $id_niveau): self
+    {
+        $this->id_niveau = $id_niveau;
 
         return $this;
     }
