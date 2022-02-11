@@ -52,7 +52,7 @@ class Formation
     /**
      * @ORM\Column(type="integer")
      */
-    private $id_niveau;
+    private $niveau_id;
 
     public function getId(): ?int
     {
@@ -135,14 +135,14 @@ class Formation
         return $this;
     }
 
-    public function getIdNiveau(): ?int
+    public function getNiveauId(): ?int
     {
-        return $this->id_niveau;
+        return $this->niveau_id;
     }
 
-    public function setIdNiveau(int $id_niveau): self
+    public function setNiveauId(int $niveau_id): self
     {
-        $this->id_niveau = $id_niveau;
+        $this->niveau_id = $niveau_id;
 
         return $this;
     }
