@@ -1,11 +1,13 @@
 <?php
 namespace App\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\FormationRepository;
+use App\Entity\Niveau;
 
 /**
  * Description of FormationsController
@@ -36,8 +38,11 @@ class FormationsController extends AbstractController {
      */
     public function index(): Response{
         $formations = $this->repository->findAll();
+        $niveauRepository = $this->getDoctrine()->getManager()->getRepository(Niveau::class);
+        $niveaux = $niveauRepository->findAll();
         return $this->render(self::PAGEFORMATIONS, [
-            'formations' => $formations
+            'formations' => $formations,
+            'niveaux' => $niveaux
         ]);
     }
     
@@ -49,8 +54,11 @@ class FormationsController extends AbstractController {
      */
     public function sort($champ, $ordre): Response{
         $formations = $this->repository->findAllOrderBy($champ, $ordre);
+        $niveauRepository = $this->getDoctrine()->getManager()->getRepository(Niveau::class);
+        $niveaux = $niveauRepository->findAll();
         return $this->render(self::PAGEFORMATIONS, [
-           'formations' => $formations
+           'formations' => $formations,
+            'niveaux' => $niveaux
         ]);
     }   
         
@@ -64,8 +72,11 @@ class FormationsController extends AbstractController {
         if($this->isCsrfTokenValid('filtre_'.$champ, $request->get('_token'))){
             $valeur = $request->get("recherche");
             $formations = $this->repository->findByContainValue($champ, $valeur);
+            $niveauRepository = $this->getDoctrine()->getManager()->getRepository(Niveau::class);
+            $niveaux = $niveauRepository->findAll();
             return $this->render(self::PAGEFORMATIONS, [
-                'formations' => $formations
+                'formations' => $formations,
+                'niveaux' => $niveaux
             ]);
         }
         return $this->redirectToRoute("formations");

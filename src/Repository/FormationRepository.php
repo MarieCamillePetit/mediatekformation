@@ -45,6 +45,15 @@ class FormationRepository extends ServiceEntityRepository
                     ->orderBy('f.'.$champ, 'ASC')
                     ->getQuery()
                     ->getResult();
+        }else if($champ=="niveau"){
+            return $this->createQueryBuilder('f')
+                    ->innerJoin('f.niveau_id', 'n')
+                    ->where('n.level LIKE :valeur')
+                    ->setParameter('valeur', $valeur)
+                    ->orderBy('f.publishedAt', 'DESC')
+                    ->setParameter('valeur', '%'.$valeur.'%')
+                    ->getQuery()
+                    ->getResult();
         }else{
             return $this->createQueryBuilder('f')
                     ->where('f.'.$champ.' LIKE :valeur')

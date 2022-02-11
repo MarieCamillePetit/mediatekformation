@@ -6,6 +6,7 @@ use DateTime;
 use DateTimeInterface;
 use App\Repository\FormationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Niveau;
 
 /**
  * @ORM\Entity(repositoryClass=FormationRepository::class)
@@ -50,7 +51,7 @@ class Formation
     private $videoId;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Niveau::class, inversedBy="formations")
      */
     private $niveau_id;
 
@@ -135,15 +136,21 @@ class Formation
         return $this;
     }
 
-    public function getNiveauId(): ?int
+    public function getNiveauId(): ?Niveau
     {
         return $this->niveau_id;
     }
 
-    public function setNiveauId(int $niveau_id): self
+    public function setNiveauId(?Niveau $niveau_id): self
     {
         $this->niveau_id = $niveau_id;
 
         return $this;
     }
+    
+    public function getLevel(): ?string
+    {
+        return $this->getNiveauId()->getLevel();
+    }
+    
 }
