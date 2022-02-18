@@ -16,7 +16,9 @@
             <h5> {{ formation.publishedatstring }}</h5>
             <h3 class="text-info mt-5">{{ formation.title }}</h3>
             <p>&nbsp;</p>
-            <p><strong>description :</strong></p>
+            <p><strong>Niveau :</strong></p>
+            <p>{{ formation.level }}</p>
+            <p><strong>Description :</strong></p>
             <p>
                 {{ formation.description|nl2br }}
             </p>
