@@ -1,0 +1,84 @@
+{% extends "basefrontadmin.html.twig" %}
+{% block body %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-left align-top" style="width: 440px;" scope="col">
+                    Titre
+                    <div class="row">
+                        <div class="col-3 mt-1">
+                            <a href="{{ path('admin.formations.sort', {champ:'title', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
+                            <a href="{{ path('admin.formations.sort', {champ:'title', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
+                        </div>
+                        <div class="col">
+                            <form class="form-inline mt-1" method="POST" action="{{ path('admin.formations.findallcontain', {champ:'title'}) }}">
+                                <div class="form-group mr-1 mb-2">
+                                    <input type="text" class="sm" name="recherche">
+                                </div>
+                                <input type="hidden" name="_token" value="{{ csrf_token('filtre_title') }}">
+                                <button type="submit" class="btn btn-info mb-2 btn-sm">filtrer</button>
+                            </form>
+                        </div>
+                    </div>
+                </th>
+                <th class="text-center align-top" scope="col">
+                    Niveau
+                    <form class="form-inline mt-1" method="POST" action="{{ path('admin.formations.findallcontain', {champ:'niveau'}) }}">
+                        <div class="form-group mr-1 mb-2">
+                            <select type="text" class="sm" name="recherche">
+                                {% for niveau in niveaux %}
+                                    <option>
+                                        {{ niveau.level|capitalize }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <input type="hidden" name="_token" value="{{ csrf_token('filtre_niveau') }}">
+                        <button type="submit" class="btn btn-info mb-2 btn-sm">filtrer</button>
+                    </form>
+                 </th>
+                <th class="text-center align-top" scope="col">
+                    Date
+                    <div class="mt-1">
+                        <a href="{{ path('admin.formations.sort', {champ:'publishedAt', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
+                        <a href="{{ path('admin.formations.sort', {champ:'publishedAt', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
+                    </div>
+                 </th>
+                <th class="text-center align-top" scope="col">
+                    &nbsp;
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for formation in formations %}
+                <tr>
+                    <td>
+                        <h5 class="text-info">
+                            {{ formation.title }}
+                        </h5>
+                    </td>
+                    <td>
+                        {{ formation.level|capitalize }}
+                    </td>
+                    <td class="text-center">
+                        {{ formation.publishedatstring }}
+                    </td>
+                    <td class="text-center">
+                        {% if formation.miniature %}
+                            <a href="{{ path('formations.showone', {id:formation.id}) }}">
+                                <img src="{{ formation.miniature }}">
+                            </a>
+                        {% endif %}
+                    </td>
+                    <td>                        
+                        <a href=# class="btn btn-secondary")">Editer</a>
+                        <a href=# class="btn btn-danger" onclick="return confirm('Etes-vous sûr de vouloir supprimer {{ formation.title }} ?')">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
