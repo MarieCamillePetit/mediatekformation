@@ -38,6 +38,7 @@ class AdminFormationsController extends AbstractController{
      */
     function __construct(FormationRepository $repository, EntityManagerInterface $om) {
         $this->repository = $repository;
+        $this->om = $om;
     }
 
     /**
@@ -89,5 +90,15 @@ class AdminFormationsController extends AbstractController{
         }
         return $this->redirectToRoute("admin.formations");
     }
-
+    
+    /**
+     * @Route("/admin/suppr/{id}", name="admin.formation.suppr")
+     * @param Formation $formation
+     * @return Response
+     */
+    public function suppr(Formation $formation): Response{
+        $this->om->remove($formation);
+        $this->om->flush();
+        return $this->redirectToRoute('admin.formations');
+    }
 }
