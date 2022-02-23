@@ -1,5 +1,8 @@
 {% extends "basefrontadmin.html.twig" %}
 {% block body %}
+    <p class="text-right">
+        <a href={{ path('admin.formations.ajout') }} class="btn btn-secondary")">Ajout une nouvelle formation</a>
+    </p>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -50,7 +53,7 @@
                 <th>
                     Actions
                     <div class="mt-1">
-                        <a href=# class="btn btn-secondary")">Ajout formation</a>
+                        <a href={{ path('admin.formations.ajout') }} class="btn btn-secondary")">Ajout formation</a>
                     </div>
                 </th>
             </tr>

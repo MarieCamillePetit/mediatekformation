@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Description of AdminFormationsController
  *
- * @author monicatevy
+ * @author mc
  */
 class AdminFormationsController extends AbstractController{
 
@@ -122,5 +122,27 @@ class AdminFormationsController extends AbstractController{
             'formation' => $formation,
             'formformation' => $formFormation->createView()
             ]);
+    }
+    
+    /**
+     * @Route("/admin/ajout", name="admin.formations.ajout")
+     * @param Request $request
+     * @return Response
+     */
+    public function ajout(Request $request): Response{
+        $formation = new Formation();
+        $formFormation = $this->createForm(FormationType::class, $formation);
+
+        $formFormation->handleRequest($request);
+        if($formFormation->isSubmitted() && $formFormation->isValid()){
+            $this->om->persist($formation);
+            $this->om->flush();
+            return $this->redirectToRoute('admin.formations');
+        }
+
+        return $this->render("admin/admin.formations.ajout.html.twig", [
+            'formation' => $formation,
+            'formformation' => $formFormation->createView()
+        ]);
     }
 }

@@ -35,12 +35,12 @@ class FormationType extends AbstractType
             ])
             ->add('miniature', TextType::class, [
                'label' => 'Miniature URL : ',
-               'attr' => ['maxlength' => 100],
+               'attr' => ['maxlength' => 46],
                'required' => false,
             ])
             ->add('picture', TextType::class, [
                'label' => 'Image URL : ',
-               'attr' => ['maxlength' => 100],
+               'attr' => ['maxlength' => 48],
                'required' => false,
             ])
             ->add('videoId', TextType::class, [

@@ -1,20 +1,25 @@
 {{ form_start(formformation) }}
-    <div class="row">
+    <div class="row mt-3">
         <div class="col">
-            {{ form_row(formformation.publishedAt) }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-8">
-            {{ form_row(formformation.title) }}
-            {{ form_row(formformation.description) }}
-            {{ form_row(formformation.submit) }}
-        </div>
-        <div class="col">
-            {{ form_row(formformation.niveau_id) }}
-            {{ form_row(formformation.picture) }}
-            {{ form_row(formformation.miniature) }}
-            {{ form_row(formformation.videoId) }}
+            <div class="row">
+                <div class="col">
+                    {{ form_row(formformation.title) }}
+                    {{ form_row(formformation.publishedAt) }}
+                    {{ form_row(formformation.description) }} 
+                    {{ form_row(formformation.submit) }}                
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-8">
+                            {{ form_row(formformation.niveau_id) }}
+                            {{ form_row(formformation.picture) }}
+                            {{ form_row(formformation.miniature) }}
+                            {{ form_row(formformation.videoId) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {{ form_end(formformation) }}
