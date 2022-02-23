@@ -1,5 +1,8 @@
 {% extends "basefrontadmin.html.twig" %}
 {% block body %}
+    <p class="text-right">
+        <a href={{ path('admin.formations.ajout') }} class="btn btn-secondary")">Ajout une nouvelle formation</a>
+    </p>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -49,6 +52,9 @@
                 </th>
                 <th>
                     Actions
+                    <div class="mt-1">
+                        <a href={{ path('admin.formations.ajout') }} class="btn btn-secondary")">Ajout formation</a>
+                    </div>
                 </th>
             </tr>
         </thead>
@@ -74,7 +80,7 @@
                         {% endif %}
                     </td>
                     <td>                        
-                        <a href=# class="btn btn-secondary")">Editer</a>
+                        <a href="{{ path('admin.formation.edit', {id:formation.id}) }}" class="btn btn-secondary")">Editer</a>
                         <a href="{{ path('admin.formation.suppr', {id:formation.id}) }}" class="btn btn-danger" onclick="return confirm('Etes-vous sûr de vouloir supprimer {{ formation.title }} ?')">Supprimer</a>
                     </td>
                 </tr>
