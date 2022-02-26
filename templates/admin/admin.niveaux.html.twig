@@ -1,0 +1,41 @@
+{% extends "basefrontadmin.html.twig" %}
+{% block body %}    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-left align-top" style="width: 200px; border-top: none" scope="col">
+                    Libellé
+                </th>
+                <th class="text-center align-top" style="border-top: none" scope="col">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <form class="form-inline mt-2 mb-2" method="POST" action="{{ path('admin.niveau.ajout') }}">
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" name="Niveau" placeholder="Nom de Niveau :">
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <button type="submit" class="btn btn-primary" style="width: 100px;">Ajouter</button>
+                    </td>
+                </tr>
+            </form>
+            {% for niveau in niveaux %}
+                <tr>
+                    <td>
+                        <h5 class="text-info">
+                            {{ niveau.level|capitalize }}
+                        </h5>
+                    </td>
+                    <td class="text-center">
+                        <a href="{{ path('admin.niveaux.suppr', {id:niveau.id}) }}" class="btn btn-danger" style="width: 100px;" onclick="return confirm('Etes-vous sûr de vouloir supprimer le niveau : {{ niveau.level }} ?')">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %} 
