@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
+use Doctrine\DBAL\Exception\DriverException;
 
 /**
  * Description of AdminNiveauxController
@@ -38,9 +39,7 @@ class AdminNiveauxController extends AbstractController{
         $this->repository = $repository;
         $this->om = $om;
     }
-    
-
-    
+        
     /**
      * @Route("/admin/niveaux/suppr/{id}", name="admin.niveaux.suppr")
      * @param Niveau $niveau
@@ -70,8 +69,6 @@ class AdminNiveauxController extends AbstractController{
         $this->om->flush();
         return $this->redirectToRoute('admin.niveaux');
     }
-
-
     /**
      * 
      * @Route("/admin/niveaux", name="admin.niveaux")
