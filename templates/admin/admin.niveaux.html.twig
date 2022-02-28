@@ -12,11 +12,11 @@
             </tr>
         </thead>
         <tbody>
-            <form class="form-inline mt-2 mb-2" method="POST" action="#">
+            <form class="form-inline mt-2 mb-2" method="POST" action="{{ path('admin.niveau.ajout') }}">
                 <tr>
                     <td>
                         <div class="form-group">
-                            <input type="text" placeholder="Rechercher">
+                            <input type="text" name="Niveau" placeholder="Niveau :">
                         </div>
                     </td>
                     <td class="text-center">
@@ -32,7 +32,7 @@
                         </h5>
                     </td>
                     <td class="text-center">
-                        <a href="#" class="btn btn-danger" style="width: 100px;" onclick="return confirm('Etes-vous sûr de vouloir supprimer le niveau : {{ niveau.level }} ?')">Supprimer</a>
+                        <a href="{{ path('admin.niveaux.suppr', {id:niveau.id}) }}" class="btn btn-danger" style="width: 100px;" onclick="return confirm('Etes-vous sûr de vouloir supprimer le niveau : {{ niveau.level }} ?')">Supprimer</a>
                     </td>
                 </tr>
             {% endfor %}

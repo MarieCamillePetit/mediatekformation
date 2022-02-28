@@ -39,7 +39,36 @@ class AdminNiveauxController extends AbstractController{
         $this->repository = $repository;
         $this->om = $om;
     }
+        
+    /**
+     * @Route("/admin/niveaux/suppr/{id}", name="admin.niveaux.suppr")
+     * @param Niveau $niveau
+     * @return Response
+     */
+    public function suppr(Niveau $niveau): Response{
+        try{
+            $this->om->remove($niveau);
+            $this->om->flush();
+        }
+        catch (ForeignKeyConstraintViolationException $e){
+
+        }
+        return $this->redirectToRoute('admin.niveaux');
+    }
     
+    /**
+     * @Route("/admin/niveaux/ajout", name="admin.niveau.ajout")
+     * @param Request $request
+     * @return Response
+     */
+    public function ajout(Request $request): Response {
+        $addNiveau = $request->get("Niveau");
+        $niveau = new Niveau();
+        $niveau->setLevel($addNiveau);
+        $this->om->persist($niveau);
+        $this->om->flush();
+        return $this->redirectToRoute('admin.niveaux');
+    }
     /**
      * 
      * @Route("/admin/niveaux", name="admin.niveaux")

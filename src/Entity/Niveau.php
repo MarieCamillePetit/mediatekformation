@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\NiveauRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,10 +41,11 @@ class Niveau
 
     public function getLevel(): ?string
     {
-        return $this->level;
+        return $this->level;    
     }
+    
 
-    public function setLevel(string $level): self
+    public function setLevel(?string $level): self
     {
         $this->level = $level;
 
@@ -71,8 +74,8 @@ class Niveau
     {
         if ($this->formations->removeElement($formation)) {
             // set the owning side to null (unless already changed)
-            if ($formation->getNiveau() === $this) {
-                $formation->setNiveau(null);
+            if ($formation->getNiveauId() === $this) {
+                $formation->setNiveauId(null);
             }
         }
 
