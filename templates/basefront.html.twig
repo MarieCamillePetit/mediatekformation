@@ -3,7 +3,7 @@
 {% block title %}{% endblock %}
 {% block stylesheets %}{% endblock %}
 {% block top %}
-    <div class="container">
+    <div class="container"> 
         <!-- titre -->
         <div class="text-left">
             <img src="{{ app.request.getBasePath()~'/banniere.jpg' }}" >
@@ -18,8 +18,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('formations') }}">Formations</a>
                     </li>
+
                 </ul>
             </div>
+                <a class="text-right" href="{{ path('app_login') }}"> Connexion !</a>
         </nav>        
     </div>
 {% endblock %}

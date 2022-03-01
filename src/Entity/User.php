@@ -11,6 +11,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+    
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -108,5 +110,13 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+    
+    /**
+     * Check si l'utilisateur a le rôle d'admin
+     * @return bool
+     */
+    public function isAdmin(): bool {
+        return in_array(self::ROLE_ADMIN, $this->getRoles());
     }
 }
