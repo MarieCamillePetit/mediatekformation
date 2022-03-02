@@ -4,14 +4,16 @@ namespace App\Form;
 
 use App\Entity\Formation;
 use App\Entity\Niveau;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use DateTime;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use \Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FormationType extends AbstractType
 {
@@ -20,7 +22,7 @@ class FormationType extends AbstractType
         $builder
             ->add('publishedAt', DateType::class, [
                 'label' => 'Date de publication : ',
-                'data' => new \DateTime(),
+                'data' => new DateTime(),
                 'required' => true,
             ])
             ->add('title', TextType::class, [
@@ -33,12 +35,12 @@ class FormationType extends AbstractType
                'attr' => ['rows' => 6],
                'required' => false,
             ])
-            ->add('miniature', TextType::class, [
+            ->add('miniature', UrlType::class, [
                'label' => 'Miniature URL : ',
                'attr' => ['maxlength' => 46],
                'required' => false,
             ])
-            ->add('picture', TextType::class, [
+            ->add('picture', UrlType::class, [
                'label' => 'Image URL : ',
                'attr' => ['maxlength' => 48],
                'required' => false,
