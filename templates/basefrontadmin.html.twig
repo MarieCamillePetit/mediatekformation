@@ -8,7 +8,18 @@
             <div class="container text-right">
                 <h6> Vous êtes connecté en tant que {{ app.user.username }} !  <a href="{{ path('app_logout') }}">Se déconnecter..</a></h6>
             </div>
-                {% endif %}
+        {% endif %}
+        
+        {% for message in app.flashes('Bravo!') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('impossible') %}
+            <div class="alert alert-danger alert-dismissible fade show">
+                {{ message }}
+            </div>
+        {% endfor %}
         <!-- titre -->
         <div class="text-left">
             <img src="{{ app.request.getBasePath()~'/banniere.jpg' }}" >

@@ -100,6 +100,7 @@ class AdminFormationsController extends AbstractController{
     public function suppr(Formation $formation): Response{
         $this->om->remove($formation);
         $this->om->flush();
+        $this->addFlash('Bravo!', 'Vous avez supprimé la formation!');
         return $this->redirectToRoute('admin.formations');
     }
     
@@ -116,6 +117,7 @@ class AdminFormationsController extends AbstractController{
         $formFormation->handleRequest($request);
         if($formFormation->isSubmitted() && $formFormation->isValid()){
             $this->om->flush();
+            $this->addFlash('Bravo!', 'Vous avez édité la formation!');
             return $this->redirectToRoute('admin.formations');
         }
         return $this->render("admin/admin.formation.edit.html.twig", [
@@ -137,6 +139,7 @@ class AdminFormationsController extends AbstractController{
         if($formFormation->isSubmitted() && $formFormation->isValid()){
             $this->om->persist($formation);
             $this->om->flush();
+            $this->addFlash('Bravo!', 'Vous avez ajouté la formation!');
             return $this->redirectToRoute('admin.formations');
         }
 
