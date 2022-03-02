@@ -119,4 +119,5 @@ class User implements UserInterface
     public function isAdmin(): bool {
         return in_array(self::ROLE_ADMIN, $this->getRoles());
     }
+    
 }

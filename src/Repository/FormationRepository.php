@@ -33,7 +33,7 @@ class FormationRepository extends ServiceEntityRepository
     }
 
     /**
-     * Enregistrements dont un champ contientune valeur
+     * Enregistrements dont un champ contient une valeur
      * ou tous les enregistrements si la valeur est vide
      * @param type $champ
      * @param type $valeur
@@ -42,6 +42,7 @@ class FormationRepository extends ServiceEntityRepository
     public function findByContainValue($champ, $valeur): array{
         if($valeur==""){
             return $this->createQueryBuilder('f')
+                    ->setParameter('valeur', $valeur)
                     ->orderBy('f.'.$champ, 'ASC')
                     ->getQuery()
                     ->getResult();
