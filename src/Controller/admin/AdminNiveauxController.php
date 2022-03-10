@@ -40,6 +40,7 @@ class AdminNiveauxController extends AbstractController{
     }
         
     /**
+     * Fonction qui permet de supprimer un niveau
      * @Route("/admin/niveaux/suppr/{id}", name="admin.niveaux.suppr")
      * @param Niveau $niveau
      * @return Response
@@ -58,6 +59,7 @@ class AdminNiveauxController extends AbstractController{
     }
     
     /**
+     * Fonction qui permet d'ajouter un niveau
      * @Route("/admin/niveaux/ajout", name="admin.niveau.ajout")
      * @param Request $request
      * @return Response
@@ -74,7 +76,7 @@ class AdminNiveauxController extends AbstractController{
         return $this->redirectToRoute('admin.niveaux');
     }
     /**
-     * 
+     * Retourne les niveaux
      * @Route("/admin/niveaux", name="admin.niveaux")
      * @return Response
      */

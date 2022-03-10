@@ -21,6 +21,7 @@ class Niveau
     private $id;
 
     /**
+     * 
      * @ORM\Column(type="string", length=15)
      */
     private $level;

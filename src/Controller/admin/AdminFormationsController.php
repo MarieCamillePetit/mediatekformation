@@ -43,6 +43,7 @@ class AdminFormationsController extends AbstractController{
     }
 
     /**
+     * Retourne les formations
      * @Route("/admin", name="admin.formations")
      * @return Response
      */
@@ -57,6 +58,7 @@ class AdminFormationsController extends AbstractController{
     }
 
     /**
+     * Fonction qui permet le trie des formations
      * @Route("/admin/formations/tri/{champ}/{ordre}", name="admin.formations.sort")
      * @param type $champ
      * @param type $ordre
@@ -73,6 +75,7 @@ class AdminFormationsController extends AbstractController{
     }   
 
     /**
+     * Fonction qui retourne les formations qui ont été recherchées
      * @Route("/admin/formations/recherche/{champ}", name="admin.formations.findallcontain")
      * @param type $champ
      * @param Request $request
@@ -93,6 +96,7 @@ class AdminFormationsController extends AbstractController{
     }
     
     /**
+     * Fonction qui permet de supprimer une formation
      * @Route("/admin/suppr/{id}", name="admin.formation.suppr")
      * @param Formation $formation
      * @return Response
@@ -106,6 +110,7 @@ class AdminFormationsController extends AbstractController{
     
     
     /**
+     * Fonction qui permet d'éditer une formation 
      * @Route("/admin/edit/{id}", name="admin.formation.edit")
      * @param Formation $formation
      * @param Request $request
@@ -127,6 +132,7 @@ class AdminFormationsController extends AbstractController{
     }
     
     /**
+     * Fonction qui permet l'ajout d'une formation grâce à la form FormationType
      * @Route("/admin/ajout", name="admin.formations.ajout")
      * @param Request $request
      * @return Response

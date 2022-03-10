@@ -33,6 +33,7 @@ class FormationsController extends AbstractController {
     }
 
     /**
+     * Retourne les formations
      * @Route("/formations", name="formations")
      * @return Response
      */
@@ -47,6 +48,7 @@ class FormationsController extends AbstractController {
     }
     
     /**
+     * Fonction qui permet le trie des formations
      * @Route("/formations/tri/{champ}/{ordre}", name="formations.sort")
      * @param type $champ
      * @param type $ordre
@@ -63,6 +65,7 @@ class FormationsController extends AbstractController {
     }   
         
     /**
+     * Fonction qui retourne les formations qui ont été recherchées
      * @Route("/formations/recherche/{champ}", name="formations.findallcontain")
      * @param type $champ
      * @param Request $request
@@ -83,6 +86,7 @@ class FormationsController extends AbstractController {
     }  
     
     /**
+     * Retourne les informations d'une formation
      * @Route("/formations/formation/{id}", name="formations.showone")
      * @param type $id
      * @return Response

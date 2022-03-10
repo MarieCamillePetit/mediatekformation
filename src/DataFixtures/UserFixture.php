@@ -6,7 +6,9 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
+/**
+ * Utilisation de UserFixture pour la création d'un User
+ */
 class UserFixture extends Fixture
 {
     private $passwordEncoder;

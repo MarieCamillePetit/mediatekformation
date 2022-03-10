@@ -27,7 +27,7 @@ class FormationType extends AbstractType
             ])
             ->add('title', TextType::class, [
                'label' => 'Titre : ',
-               'attr' => ['maxlength' => 100],
+               'attr' => ['maxlength' => 90],
                'required' => true,
             ])
             ->add('description', TextareaType::class, [
@@ -37,17 +37,17 @@ class FormationType extends AbstractType
             ])
             ->add('miniature', UrlType::class, [
                'label' => 'Miniature URL : ',
-               'attr' => ['maxlength' => 46],
+               'attr' => ['maxlength' => 30],
                'required' => false,
             ])
             ->add('picture', UrlType::class, [
                'label' => 'Image URL : ',
-               'attr' => ['maxlength' => 48],
+               'attr' => ['maxlength' => 30],
                'required' => false,
             ])
             ->add('videoId', TextType::class, [
                'label' => 'Video ID : ',
-               'attr' => ['maxlength' => 11],
+               'attr' => ['maxlength' => 12],
                'required' => false, 
             ])
             ->add('niveau_id', EntityType::class, [

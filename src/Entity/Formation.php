@@ -8,6 +8,7 @@ use DateTimeInterface;
 use App\Repository\FormationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Niveau;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=FormationRepository::class)
@@ -22,12 +23,16 @@ class Formation
     private $id;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Date
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $publishedAt;
 
     /**
-     * @ORM\Column(type="string", length=91, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Length(max = 90)
+     * @ORM\Column(type="string", length=90, nullable=true)
      */
     private $title;
 
@@ -37,17 +42,31 @@ class Formation
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=46, nullable=true)
+     * @Assert\Length(max = 30)
+     * @Assert\Url(
+     *    protocols = {"http", "https"},
+     *    message = "Entrez une URL valide."
+     * )
+     * @ORM\Column(type="string", length=30, nullable=true)
      */
     private $miniature;
 
     /**
-     * @ORM\Column(type="string", length=48, nullable=true)
+     * @Assert\Length(max = 30)
+     * @Assert\Url(
+     *    protocols = {"http", "https"},
+     *    message = "Entrez une URL valide."
+     * )
+     * @ORM\Column(type="string", length=30, nullable=true)
      */
     private $picture;
 
     /**
-     * @ORM\Column(type="string", length=11, nullable=true)
+     * @Assert\Length(
+     *  max = 12,
+     *  maxMessage = "{{ value }} l'ID n'est pas bon",
+     *  )
+     * @ORM\Column(type="string", length=12, nullable=true)
      */
     private $videoId;
 

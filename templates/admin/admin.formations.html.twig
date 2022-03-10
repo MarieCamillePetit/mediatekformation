@@ -16,7 +16,7 @@
                                     <input type="text" class="sm" name="recherche">
                                 </div>
                                 <input type="hidden" name="_token" value="{{ csrf_token('filtre_title') }}">
-                                <button type="submit" class="btn btn-info mb-2 btn-sm">filtrer</button>
+                                <button type="submit" class="btn btn-info mb-2 btn-sm">Filtrer</button>
                             </form>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             </select>
                         </div>
                         <input type="hidden" name="_token" value="{{ csrf_token('filtre_niveau') }}">
-                        <button type="submit" class="btn btn-info mb-2 btn-sm">filtrer</button>
+                        <button type="submit" class="btn btn-info mb-2 btn-sm">Filtrer</button>
                     </form>
                  </th>
                 <th class="text-center align-top" scope="col">
@@ -50,7 +50,7 @@
                 <th class="text-center align-top" scope="col">
                     Actions
                     <p>
-                        <a href={{ path('admin.formations.ajout') }} class="btn btn-secondary")">Ajout une formation</a>
+                        <a href={{ path('admin.formations.ajout') }} class="btn btn-info mb-2">Ajouter une formation</a>
                     </p>
                 </th>
             </tr>

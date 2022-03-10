@@ -24,6 +24,7 @@ class NiveauController extends AbstractController
     }
 
     /**
+     * Retourne les niveaux
      * @Route("/niveaux", name="niveaux")
      * @return Response
      */

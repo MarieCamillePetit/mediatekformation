@@ -28,6 +28,7 @@ class AccueilController extends AbstractController{
     }    
     
     /**
+     * Retourne les 2 dernières formations
      * @Route("/", name="accueil")
      * @return Response
      */
