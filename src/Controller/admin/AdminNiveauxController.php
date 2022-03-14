@@ -52,7 +52,7 @@ class AdminNiveauxController extends AbstractController{
             $this->addFlash('Bravo!', 'Vous avez supprimé le niveau!');
         }
         catch (ForeignKeyConstraintViolationException $e){
-            $this->addFlash('impossible', 'Vous ne pouvez pas supprimé ce niveau.. Des formations utilise celui-ci');
+            $this->addFlash('impossible', 'Vous ne pouvez pas supprimer ce niveau... Des formations utilisent celui-ci');
 
         }
         return $this->redirectToRoute('admin.niveaux');
